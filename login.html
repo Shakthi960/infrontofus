@@ -69,5 +69,50 @@
 
   <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
   <script src="main.js"></script>
+  <script>
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('auth-form');
+  const tabLogin = document.getElementById('tab-login');
+  const tabRegister = document.getElementById('tab-register');
+  const nameGroup = document.getElementById('name-group');
+
+  let mode = 'login';
+
+  tabLogin.addEventListener('click', () => {
+    mode = 'login';
+    tabLogin.classList.add('active');
+    tabRegister.classList.remove('active');
+    nameGroup.style.display = 'none';
+  });
+
+  tabRegister.addEventListener('click', () => {
+    mode = 'register';
+    tabRegister.classList.add('active');
+    tabLogin.classList.remove('active');
+    nameGroup.style.display = 'block';
+  });
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    try {
+      if (mode === 'login') {
+        await AuthService.login(email, password);
+        alert('Login successful');
+      } else {
+        const name = document.getElementById('name').value;
+        await AuthService.register(name, email, password);
+        alert('Account created');
+      }
+      window.location.href = 'index.html';
+    } catch (err) {
+      alert(err.message);
+    }
+  });
+});
+</script>
+
 </body>
 </html>

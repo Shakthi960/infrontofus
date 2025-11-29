@@ -29,13 +29,37 @@
 
             <!-- Navigation Links -->
             <ul class="nav-links" id="nav-links">
-                <li><a class="nav-link" href="index.html">Home</a></li>
-                <li><a class="nav-link" href="about.html">About</a></li>
-                <li><a class="nav-link" href="courses.html">Courses</a></li>
-                <li><a class="nav-link" href="blog.html">Blog</a></li>
-                <li><a class="nav-link" href="contact.html">Contact</a></li>
-                <li><a class="nav-link login-btn" href="#" id="loginBtn">Login</a></li>
-            </ul>
+    <li><a class="nav-link" href="index.html">Home</a></li>
+    <li><a class="nav-link" href="about.html">About</a></li>
+    <li><a class="nav-link" href="courses.html">Courses</a></li>
+    <li><a class="nav-link" href="blog.html">Blog</a></li>
+    <li><a class="nav-link" href="contact.html">Contact</a></li>
+    
+    <!-- Shopping Cart -->
+    <li class="cart-icon">
+        <a href="#" class="nav-link" id="cartToggle">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-count" id="cartCount">0</span>
+        </a>
+    </li>
+    
+    <!-- User Profile (Visible when logged in) -->
+    <li class="user-profile" id="userProfile" style="display: none;">
+        <div class="user-avatar" id="userAvatar">U</div>
+        <span class="user-name" id="userName">User</span>
+        <div class="user-dropdown">
+            <a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+            <a href="my-courses.html"><i class="fas fa-book"></i> My Courses</a>
+            <a href="profile.html"><i class="fas fa-user"></i> Profile</a>
+            <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+    </li>
+    
+    <!-- Login Button (Visible when not logged in) -->
+    <li>
+        <a class="nav-link login-btn" href="#" id="loginBtn">Login</a>
+    </li>
+</ul>
 
             <!-- Hamburger Menu -->
             <div class="hamburger" id="hamburger">
@@ -285,46 +309,24 @@
         </div>
     </footer>
 
-    <!-- Login Modal -->
-    <div class="modal" id="loginModal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <h2>Login to Your Account</h2>
-            <form id="loginForm">
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" required>
-                </div>
-                <button type="submit" class="btn btn-primary btn-full">Login</button>
-                <p class="form-footer">Don't have an account? <a href="#" id="showRegister">Register here</a></p>
-            </form>
-            
-            <form id="registerForm" style="display: none;">
-                <div class="form-group">
-                    <label for="reg-name">Full Name</label>
-                    <input type="text" id="reg-name" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="reg-email">Email</label>
-                    <input type="email" id="reg-email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="reg-password">Password</label>
-                    <input type="password" id="reg-password" name="password" required>
-                </div>
-                <div class="form-group">
-                    <label for="reg-confirm">Confirm Password</label>
-                    <input type="password" id="reg-confirm" name="confirm" required>
-                </div>
-                <button type="submit" class="btn btn-primary btn-full">Register</button>
-                <p class="form-footer">Already have an account? <a href="#" id="showLogin">Login here</a></p>
-            </form>
-        </div>
+    <!-- Shopping Cart Modal -->
+<div class="cart-overlay" id="cartOverlay"></div>
+<div class="cart-modal" id="cartModal">
+    <div class="cart-header">
+        <h3>Your Cart</h3>
+        <button class="close-cart" id="closeCart">&times;</button>
     </div>
+    <div class="cart-items" id="cartItems">
+        <!-- Cart items will be loaded here -->
+    </div>
+    <div class="cart-footer">
+        <div class="cart-total">
+            <span>Total:</span>
+            <span>₹<span id="cartTotal">0</span></span>
+        </div>
+        <button class="btn btn-primary btn-full" id="checkoutBtn">Proceed to Checkout</button>
+    </div>
+</div>
 
     <script src="main.js"></script>
 </body>
